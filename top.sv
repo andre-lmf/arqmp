@@ -36,7 +36,7 @@ module top #(parameter VGA_BITS = 4) (
   riscvmulti cpu(clk, reset, addr, writedata, memwrite, readdata, writemask);
 
   // memory 
-  mem ram(clk, memwrite, addr, writedata, readdata, 'h200 + vaddr, vdata, writemask);
+  mem ram(clk, memwrite, addr, writedata, readdata, 'h200 + (vaddr << 2), vdata, writemask);
 
   // VGA controller
   vga gpu(clk, reset, VGA_HS, VGA_VS, VGA_DA, vaddr);
